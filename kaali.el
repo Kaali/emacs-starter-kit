@@ -1,4 +1,12 @@
 ;;
+;; Set up some variables
+;;
+(setq *is-a-mac* (eq system-type 'darwin))
+(setq *is-carbon-emacs* (and *is-a-mac* (eq window-system 'mac)))
+(setq *is-cocoa-emacs* (and *is-a-mac* (eq window-system 'ns)))
+
+
+;;
 ;; Set my theme
 ;;
 (zenburn)
@@ -224,4 +232,6 @@
   (tooltip-mode t))
 
 ;; Follow git commit message best practices in Magit.
-(add-hook 'magit-log-edit-mode-hook (lambda () (setq fill-column 72)))
+(add-hook 'magit-log-edit-mode-hook (lambda ()
+                                      (setq fill-column 72)
+                                      (turn-on-auto-fill)))

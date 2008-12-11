@@ -10,6 +10,8 @@
 ;; Set my theme
 ;;
 (zenburn)
+(setq background-mode 'dark)
+(setq frame-background-mode 'dark)
 (set-face-font 'default "-apple-inconsolata-medium-r-normal--14-0-72-72-m-0-iso10646-1")
 
 
@@ -145,6 +147,9 @@
 ;;
 ;; Python
 ;;
+
+;; Use IPython
+(require 'ipython)
 
 ;; Set Python indentation to 4 spaces
 (defun vj/python-hook ()

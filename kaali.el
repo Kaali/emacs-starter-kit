@@ -74,6 +74,26 @@
              (local-unset-key [(meta left)])
              (local-unset-key [(meta right)])))
 
+;; Ido-mode
+(ido-everywhere t)
+;; Use Ido for M-x command completion
+(setq ido-execute-command-cache nil)
+(defun ido-execute-command ()
+  (interactive)
+  (call-interactively
+   (intern
+    (ido-completing-read
+     "M-x "
+     (progn
+       (unless ido-execute-command-cache
+	 (mapatoms (lambda (s)
+		     (when (commandp s)
+		       (setq ido-execute-command-cache
+			     (cons (format "%S" s) ido-execute-command-cache))))))
+       ido-execute-command-cache)))))
+    
+(global-set-key "\M-x" 'ido-execute-command)
+
 
 ;;
 ;; Key bindings / input

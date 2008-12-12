@@ -94,6 +94,9 @@
     
 (global-set-key "\M-x" 'ido-execute-command)
 
+;; Winner-mode
+(winner-mode t)
+
 
 ;;
 ;; Key bindings / input

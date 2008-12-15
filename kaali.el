@@ -97,6 +97,17 @@
 ;; Winner-mode
 (winner-mode t)
 
+;; ERC
+(eval-after-load "erc"
+                 '(progn
+                    (setq erc-pals '("Raekkeri" "ArtemD" "misantrooppi" "MaeK" "mts")
+                          erc-notify-list erc-pals)
+                    (require 'erc-notify)
+                    (erc-completion-mode t)
+                    (erc-match-mode t)
+                    (erc-netsplit-mode t)
+                    (erc-timestamp-mode t)
+                    (erc-track-mode t)))
 
 ;;
 ;; Key bindings / input

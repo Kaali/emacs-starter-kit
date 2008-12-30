@@ -59,7 +59,9 @@
   (auto-fill-mode) ;; in comments only
   (if window-system (hl-line-mode t))
   (pretty-lambdas)
-  (if (functionp 'idle-highlight) (idle-highlight)))
+  ;; TODO: this breaks in js2-mode!
+  ;;(if (functionp 'idle-highlight) (idle-highlight))
+  )
 
 (defun untabify-buffer ()
   (interactive)
@@ -68,6 +70,13 @@
 (defun indent-buffer ()
   (interactive)
   (indent-region (point-min) (point-max)))
+
+(defun cleanup-buffer ()
+  "Perform a bunch of operations on the whitespace content of a buffer."
+  (interactive)
+  (indent-buffer)
+  (untabify-buffer)
+  (delete-trailing-whitespace))
 
 (defun recentf-ido-find-file ()
   "Find a recent file using ido."
@@ -142,6 +151,11 @@
     (if (get-buffer buffer)
         (switch-to-buffer buffer)
       (funcall function))))
+
+(defun pairing-bot ()
+  "If you can't pair program with a human, use this instead."
+  (interactive)
+  (message (if (y-or-n-p "Do you have a test for that? ") "Good." "Bad!")))
 
 (provide 'starter-kit-defuns)
 ;;; starter-kit-defuns.el ends here

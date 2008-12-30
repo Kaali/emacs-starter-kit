@@ -9,6 +9,10 @@
   (tool-bar-mode -1)
   (blink-cursor-mode -1))
 
+(set-terminal-coding-system 'utf-8)
+(set-keyboard-coding-system 'utf-8)
+(prefer-coding-system 'utf-8)
+
 (setq visible-bell t
       font-lock-maximum-decoration t
       inhibit-startup-message t
@@ -88,10 +92,7 @@
 (add-to-list 'auto-mode-alist '("\\.rb$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Rakefile$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.js\\(on\\)?$" . js2-mode))
-
 (add-to-list 'auto-mode-alist '("\\.xml$" . nxml-mode))
-(add-to-list 'auto-mode-alist '("\\.html$" . html-mode))
-(add-to-list 'auto-mode-alist '("\\.rhtml$" . html-mode))
 
 ;; Cosmetics
 

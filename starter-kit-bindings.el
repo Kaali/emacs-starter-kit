@@ -14,10 +14,7 @@
 (global-set-key (kbd "M-/") 'hippie-expand)
 
 ;; Perform general cleanup.
-(global-set-key (kbd "C-c n") (lambda () (interactive)
-                                (indent-buffer)
-                                (delete-trailing-whitespace)
-                                (untabify-buffer)))
+(global-set-key (kbd "C-c n") 'cleanup-buffer)
 
 ;; Turn on the menu bar for exploring new modes
 (global-set-key [f1] 'menu-bar-mode)
@@ -46,13 +43,6 @@
 (global-set-key "\C-xO" (lambda () (interactive) (other-window -1))) ;; back one
 (global-set-key "\C-x\C-o" (lambda () (interactive) (other-window 2))) ;; forward two
 
-;; Lisp
-(define-key read-expression-map (kbd "TAB") 'lisp-complete-symbol)
-(define-key lisp-mode-shared-map (kbd "RET") 'reindent-then-newline-and-indent)
-(define-key lisp-mode-shared-map (kbd "C-\\") 'lisp-complete-symbol)
-(define-key lisp-mode-shared-map (kbd "C-c s") 'eval-and-replace)
-(define-key lisp-mode-shared-map (kbd "C-c v") 'eval-buffer)
-
 ;; Start eshell or switch to it if it's active.
 (global-set-key (kbd "C-x m") 'eshell)
 
@@ -60,7 +50,10 @@
 (global-set-key (kbd "C-x M") (lambda () (interactive) (eshell t)))
 
 ;; Start a regular shell if you prefer that.
-(global-set-key (kbd "C-x C-m") 'shell)
+(global-set-key (kbd "C-x M-m") 'shell)
+
+;; If you want to be able to M-x without meta
+(global-set-key (kbd "C-x C-m") 'execute-extended-command)
 
 ;; Fetch the contents at a URL, display it raw.
 (global-set-key (kbd "C-x h") 'view-url)
@@ -68,12 +61,15 @@
 ;; Help should search more than just commands
 (global-set-key (kbd "C-h a") 'apropos)
 
+;; Should be able to eval-and-replace anywhere.
+(global-set-key (kbd "C-c e") 'eval-and-replace)
+
 ;; Applications
 
 (global-set-key (kbd "C-c j") (lambda () (interactive) (switch-or-start 'jabber-connect "*-jabber-*")))
 (global-set-key (kbd "C-c g") (lambda () (interactive) (switch-or-start 'gnus "*Group*")))
 (global-set-key (kbd "C-c i") (lambda () (interactive) (switch-or-start (lambda ()
-                                                                          (rcirc-connect "irc.freenode.net"))
+                                                                     (rcirc-connect "irc.freenode.net"))
                                                                    "*irc.freenode.net*")))
 (global-set-key (kbd "C-c J") 'jabber-send-presence)
 (global-set-key (kbd "C-c M-j") 'jabber-disconnect)

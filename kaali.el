@@ -170,6 +170,8 @@
       (append '(("\\.rst$" . rst-mode)
                 ("\\.rest$" . rst-mode)) auto-mode-alist))
 
+;; Org-mode
+(add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
 
 ;;
 ;; Text mode settings

@@ -278,7 +278,6 @@
 (setq transient-mark-mode t)
 (show-paren-mode t)
 (size-indication-mode t)
-(setq browse-url-browser-function 'browse-url-maxosx-browser)
 (setq-default fill-column 78)
 
 (when window-system
@@ -288,3 +287,9 @@
 (add-hook 'magit-log-edit-mode-hook (lambda ()
                                       (setq fill-column 72)
                                       (turn-on-auto-fill)))
+
+;; Use Safari as my browser through Applescript
+(setq browse-url-browser-function
+    (lambda (url &optional new-window) 
+      (message url)
+      (do-applescript (concat "tell application \"Safari\" \n activate \n open location \"" url "\" \n end tell"))))

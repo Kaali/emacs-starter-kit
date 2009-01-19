@@ -109,6 +109,12 @@
                     (erc-timestamp-mode t)
                     (erc-track-mode t)))
 
+
+;; Tabkey2
+(tabkey2-mode t)
+(setq tabkey2-message-style 'echo-area)
+
+
 ;;
 ;; Key bindings / input
 ;;

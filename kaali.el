@@ -175,6 +175,8 @@
 (setq auto-mode-alist
       (append '(("\\.rst$" . rst-mode)
                 ("\\.rest$" . rst-mode)) auto-mode-alist))
+(add-hook 'rst-adjust-hook 'rst-toc-update)
+
 
 ;; Org-mode
 (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))

@@ -279,6 +279,7 @@
 (show-paren-mode t)
 (size-indication-mode t)
 (setq-default fill-column 78)
+(setq comment-style 'indent)
 
 (when window-system
   (tooltip-mode t))

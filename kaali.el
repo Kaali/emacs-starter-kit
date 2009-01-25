@@ -25,6 +25,7 @@
 ;;
 
 ;; Flymake-mode
+(load-library "flymake-cursor")
 (require 'flymake)
 (set-face-attribute 'flymake-warnline nil
                     :background zenburn-bg

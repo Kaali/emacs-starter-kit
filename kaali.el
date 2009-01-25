@@ -281,9 +281,6 @@
 (setq-default fill-column 78)
 (setq comment-style 'indent)
 
-(when window-system
-  (tooltip-mode t))
-
 ;; Follow git commit message best practices in Magit.
 (add-hook 'magit-log-edit-mode-hook (lambda ()
                                       (setq fill-column 72)

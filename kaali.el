@@ -75,24 +75,25 @@
              (local-unset-key [(meta right)])))
 
 ;; Ido-mode
-(ido-everywhere t)
+(ido-mode nil)
+;; (ido-everywhere t)
 ;; Use Ido for M-x command completion
-(setq ido-execute-command-cache nil)
-(defun ido-execute-command ()
-  (interactive)
-  (call-interactively
-   (intern
-    (ido-completing-read
-     "M-x "
-     (progn
-       (unless ido-execute-command-cache
-	 (mapatoms (lambda (s)
-		     (when (commandp s)
-		       (setq ido-execute-command-cache
-			     (cons (format "%S" s) ido-execute-command-cache))))))
-       ido-execute-command-cache)))))
+;; (setq ido-execute-command-cache nil)
+;; (defun ido-execute-command ()
+;;   (interactive)
+;;   (call-interactively
+;;    (intern
+;;     (ido-completing-read
+;;      "M-x "
+;;      (progn
+;;        (unless ido-execute-command-cache
+;; 	 (mapatoms (lambda (s)
+;; 		     (when (commandp s)
+;; 		       (setq ido-execute-command-cache
+;; 			     (cons (format "%S" s) ido-execute-command-cache))))))
+;;        ido-execute-command-cache)))))
     
-(global-set-key "\M-x" 'ido-execute-command)
+;; (global-set-key "\M-x" 'ido-execute-command)
 
 ;; Winner-mode
 (winner-mode t)
@@ -213,6 +214,13 @@
     
   (add-to-list 'flymake-allowed-file-name-masks
                '("\\.py\\'" flymake-pylint-init)))
+
+;;
+;; Icicles
+;;
+(add-to-list 'load-path (concat vendor-dir "icicles"))
+(require 'icicles)
+(icy-mode t)
 
 
 ;;

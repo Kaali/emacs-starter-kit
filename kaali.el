@@ -222,6 +222,9 @@
 (add-to-list 'load-path (concat vendor-dir "icicles"))
 (require 'icicles)
 (icy-mode t)
+(global-set-key (kbd "C-x f") 'icicle-recent-file)
+(global-set-key "\C-x\C-i" 'imenu)
+(global-set-key (kbd "C-x M-f") 'find-file-other-window)
 
 
 ;;

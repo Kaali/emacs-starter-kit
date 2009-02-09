@@ -9,7 +9,7 @@
                                    'css-mode
                                    'nxml
                                    'gist
-                               ;; To submit:
+                               ;; To submit
 ;;;                                "magit"
 ;;;                                "paredit"
 ;;;                                "clojure-mode"
@@ -21,7 +21,7 @@
 ;;;                                "color-theme"
 ;;;                                "color-theme-zenburn"
 ;;;                                "color-theme-vivid-chalk"
-                               ;; Complicated ones:
+                               ;; Complicated ones
 ;;;                                "nxhtml"
 ;;;                                "rinari"
 ;;;                                "jabber"
@@ -32,6 +32,7 @@
 
 ;; Work around a bug in ELPA
 (ignore-errors (load "elpa/inf-ruby-2.0/inf-ruby-autoloads"))
+(ignore-errors (load "elpa/lisppaste-1.5/lisppaste-autoloads"))
 
 (defun starter-kit-elpa-install ()
   "Install all starter-kit packages that aren't installed."

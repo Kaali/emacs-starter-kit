@@ -5,6 +5,7 @@
 (eval-after-load 'ruby-mode
   '(progn
      (require 'ruby-compilation)
+     (setq ruby-use-encoding-map nil)
      (add-hook 'ruby-mode-hook 'inf-ruby-keys)
      (define-key ruby-mode-map (kbd "RET") 'reindent-then-newline-and-indent)
      (define-key ruby-mode-map (kbd "C-M-h") 'backward-kill-word)
@@ -82,6 +83,10 @@ exec-to-string command, but it works and seems fast"
                    (local-set-key (kbd "C-c d")
                                   'flymake-display-err-menu-for-current-line)
                    (flymake-mode t))))))
+
+(eval-after-load 'haml-mode
+  (if (functionp 'whitespace-mode)
+      (add-hook 'haml-mode-hook 'whitespace-mode)))
 
 ;; TODO: set up ri
 ;; TODO: electric

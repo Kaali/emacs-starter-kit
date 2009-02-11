@@ -52,6 +52,7 @@
 ;; Flyspell-mode
 (autoload 'flyspell-mode "flyspell" "On-the-fly spelling checker." t)
 (add-hook 'text-mode-hook 'turn-on-flyspell)
+(add-hook 'rst-mode-hook 'turn-on-flyspell)
 (add-hook 'c-mode-common-hook 'flyspell-prog-mode)
 ;; Disabled because of problems with unicode strings
 ;; (add-hook 'python-mode-hook 'flyspell-prog-mode)
@@ -178,6 +179,7 @@
       (append '(("\\.rst$" . rst-mode)
                 ("\\.rest$" . rst-mode)) auto-mode-alist))
 (add-hook 'rst-adjust-hook 'rst-toc-update)
+(add-hook 'rst-mode-hook 'turn-on-auto-fill)
 
 
 ;; Org-mode

@@ -129,6 +129,13 @@
 (setq ropemacs-enable-autoimport t)
 
 
+;; Yasnippet
+(require 'yasnippet)
+(yas/initialize)
+(yas/load-directory "~/.emacs.d/vendor/snippets")
+(yas/load-directory "~/.emacs.d/snippets")
+
+
 ;;
 ;; Key bindings / input
 ;;

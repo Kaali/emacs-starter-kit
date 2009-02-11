@@ -18,7 +18,8 @@
 ;; Store 3rd-party libraries  in "vendor/".
 (setq vendor-dir (concat dotfiles-dir "vendor/"))
 (add-to-list 'load-path vendor-dir)
-
+(progn (cd vendor-dir)
+       (normal-top-level-add-subdirs-to-load-path))
 
 ;;
 ;; Package setup
@@ -116,6 +117,16 @@
 ;; Tabkey2
 (tabkey2-mode t)
 (setq tabkey2-message-style 'echo-area)
+
+
+;; Pymacs / rope
+(autoload 'pymacs-apply "pymacs")
+(autoload 'pymacs-call "pymacs")
+(autoload 'pymacs-eval "pymacs" nil t)
+(autoload 'pymacs-exec "pymacs" nil t)
+(autoload 'pymacs-load "pymacs" nil t)
+(pymacs-load "ropemacs" "rope-")
+(setq ropemacs-enable-autoimport t)
 
 
 ;;

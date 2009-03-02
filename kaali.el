@@ -226,7 +226,7 @@
 ;;
 
 ;; Use IPython
-(require 'ipython)
+;(require 'ipython)
 
 ;; Set Python indentation to 4 spaces
 (defun vj/python-hook ()

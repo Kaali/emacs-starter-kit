@@ -147,6 +147,20 @@
 (yas/load-directory "~/.emacs.d/snippets")
 
 
+;; Whitespace-mode
+(eval-after-load "whitespace"
+  '(progn
+     (set-face-attribute 'whitespace-tab nil
+                         :foreground zenburn-bg+1
+                         :background zenburn-bg)
+     (set-face-attribute 'whitespace-indentation nil
+                         :foreground zenburn-yellow
+                         :background zenburn-yellow-2)
+     (set-face-attribute 'whitespace-trailing nil
+                         :foreground zenburn-red
+                         :background zenburn-red-3)))
+
+
 ;;
 ;; Key bindings / input
 ;;

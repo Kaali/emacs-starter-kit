@@ -325,7 +325,7 @@
   "Create tags file."
   (interactive "DDirectory: ")
   (eshell-command 
-   (format "find -E %s -type f -regex \".*\.(c|cpp|h|hpp|py)$\" | etags -" dir-name)))
+   (format "cd %s; %s > TAGS" dir-name (concat vendor-dir "recurse_etags.sh"))))
 
 ;; Mark-ring is navigable by typing C-u C-SPC and then repeating C-SPC forever
 (setq set-mark-command-repeat-pop t)

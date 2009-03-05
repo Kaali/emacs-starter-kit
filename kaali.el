@@ -160,7 +160,7 @@
                     :background zenburn-red-3)
 (setq whitespace-style
       '(tabs trailing lines space-before-tab newline
-             indentation empty space-after-tab tab-mark))
+             indentation space-after-tab tab-mark))
 (setq whitespace-global-modes t)
 (global-whitespace-mode t)
 

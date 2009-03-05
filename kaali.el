@@ -324,8 +324,9 @@
 (defun create-tags (dir-name)
   "Create tags file."
   (interactive "DDirectory: ")
-  (eshell-command 
-   (format "cd %s; %s > TAGS" dir-name (concat vendor-dir "recurse_etags.sh"))))
+  (eshell-command
+   (format "cd %s; find . -type f | xargs -n1 -P2 %s > TAGS"
+           dir-name (concat vendor-dir "etags.sh"))))
 
 ;; Mark-ring is navigable by typing C-u C-SPC and then repeating C-SPC forever
 (setq set-mark-command-repeat-pop t)

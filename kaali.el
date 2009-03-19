@@ -11,10 +11,12 @@
 ;;
 (setenv "PATH" (concat "/usr/local/bin:"
                        "/opt/local/bin:"
+                       "/usr/texbin:"
                        (concat (getenv "HOME") "/bin:")
                        (getenv "PATH")))
 (setq exec-path (append exec-path '("/usr/local/bin"
                                     "/opt/local/bin"
+                                    "/usr/texbin:"
                                     (concat (getenv "HOME") "/bin"))))
 
 ;;
@@ -60,6 +62,9 @@
         ("\\.tex\\'" flymake-simple-tex-init)
         ("\\.idl\\'" flymake-simple-make-init)))
 (add-hook 'find-file-hook 'flymake-find-file-hook)
+
+(defun flymake-get-tex-args (file-name)
+  (list "/usr/texbin/latex" (list "-file-line-error-style" file-name)))
 
 ;; Flyspell-mode
 (autoload 'flyspell-mode "flyspell" "On-the-fly spelling checker." t)

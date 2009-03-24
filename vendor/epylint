@@ -5,24 +5,26 @@ import sys
 
 from subprocess import *
 
-p = Popen("pylint -f parseable -r n --disable-msg=W0312 --disable-msg-cat=C,R %s" %
+MSG_RE = r"\[(?P<msg>[WE][0-9]+)(, (?P<func>.+?))?\]"
+
+p = Popen('pylint -i y -f parseable -r n --disable-msg=W0312 --disable-msg-cat=C,R %s' %
           sys.argv[1], shell = True, stdout = PIPE).stdout
 
 for line in p:
-    match = re.search("\\[([WE])(, (.+?))?\\]", line)
+    match = re.search(MSG_RE, line)
     if match:
-        kind = match.group(1)
-        func = match.group(3)
-        if kind == "W":
-            msg = "Warning"
+        msg = match.group('msg')
+        func = match.group('func')
+        if msg[0] == 'W':
+            type_ = 'Warning'
         else:
-            msg = "Error"
-    
-            if func:
-                line = re.sub("\\[([WE])(, (.+?))?\\]",
-                              "%s (%s):" % (msg, func), line)
-            else:
-                line = re.sub("\\[([WE])?\\]", "%s:" % msg, line)
+            type_ = 'Error'
+
+        if func:
+            line = re.sub(MSG_RE, '%s [%s] (%s):' % (type_, msg, func), line)
+        else:
+            line = re.sub(MSG_RE, '%s [%s]:' % (type_, msg), line)
+
         print line,
-    
+
 p.close()

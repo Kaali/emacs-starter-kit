@@ -5,9 +5,9 @@ import sys
 
 from subprocess import *
 
-MSG_RE = r"\[(?P<msg>[WE][0-9]+)(, (?P<func>.+?))?\]"
+MSG_RE = r"\[(?P<msg>[WCREF][0-9]+)(, (?P<func>.+?))?\]"
 
-p = Popen('pylint -i y -f parseable -r n --disable-msg=W0312 --disable-msg-cat=C,R %s' %
+p = Popen('pylint -i y -f parseable -r n --disable-msg=W0312 %s' %
           sys.argv[1], shell = True, stdout = PIPE).stdout
 
 for line in p:
@@ -15,10 +15,10 @@ for line in p:
     if match:
         msg = match.group('msg')
         func = match.group('func')
-        if msg[0] == 'W':
-            type_ = 'Warning'
-        else:
+        if msg[0] == 'E' or msg[0] == 'F':
             type_ = 'Error'
+        else:
+            type_ = 'Warning'
 
         if func:
             line = re.sub(MSG_RE, '%s [%s] (%s):' % (type_, msg, func), line)

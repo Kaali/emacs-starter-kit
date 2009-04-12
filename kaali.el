@@ -381,6 +381,9 @@
 (setq-default fill-column 78)
 (setq comment-style 'indent)
 
+;; Confirm killing, because of accidental kills when in org-mode
+(setq confirm-kill-emacs 'yes-or-no-p)
+
 ;; Follow git commit message best practices in Magit.
 (add-hook 'magit-log-edit-mode-hook (lambda ()
                                       (setq fill-column 72)

@@ -414,3 +414,7 @@
     (lambda (url &optional new-window) 
       (message url)
       (do-applescript (concat "tell application \"Safari\" \n activate \n open location \"" url "\" \n end tell"))))
+
+;; I want to use regexps by default with query-replace
+(global-set-key (kbd "M-%") 'query-replace-regexp)
+(global-set-key (kbd "C-M-%") 'query-replace)

@@ -22,10 +22,23 @@
 ;;
 ;; Set my theme
 ;;
+(setq *normal-font* "-apple-inconsolata-medium-r-normal--14-0-72-72-m-0-iso10646-1")
+(setq *large-font* "-apple-inconsolata-medium-r-normal--18-0-72-72-m-0-iso10646-1")
+
 (zenburn)
 (setq background-mode 'dark)
 (setq frame-background-mode 'dark)
-(set-face-font 'default "-apple-inconsolata-medium-r-normal--14-0-72-72-m-0-iso10646-1")
+(set-face-font 'default *normal-font*)
+
+(defun vj/large-font ()
+  "Switches to a larger font"
+  (interactive)
+  (set-face-font 'default *large-font*))
+
+(defun vj/normal-font ()
+  "Switches to the normal font"
+  (interactive)
+  (set-face-font 'default *normal-font*))
 
 
 ;; Store 3rd-party libraries  in "vendor/".

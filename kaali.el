@@ -406,14 +406,12 @@
 (column-number-mode t)
 (cua-mode t)
 (setq cua-enable-cua-keys nil)
-(setq cua-highlight-region-shift-only t)
-(setq cua-toggle-set-mark nil)
 
 (setq current-language-environment "UTF-8")
 (setq locale-coding-system 'utf-8)
 (set-selection-coding-system 'utf-8)
 
-(setq transient-mark-mode nil)
+(setq transient-mark-mode t)
 (show-paren-mode t)
 (size-indication-mode t)
 (setq-default fill-column 78)

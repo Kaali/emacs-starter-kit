@@ -417,6 +417,11 @@
 (setq-default fill-column 78)
 (setq comment-style 'indent)
 
+(which-func-mode t)
+(set-face-attribute 'which-func nil
+                    :foreground zenburn-yellow-2
+                    :background nil)
+
 ;; Confirm killing, because of accidental kills when in org-mode
 (setq confirm-kill-emacs 'yes-or-no-p)
 
